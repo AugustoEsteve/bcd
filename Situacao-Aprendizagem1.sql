@@ -45,31 +45,35 @@ INSERT INTO Leitor (nome, email, numero_emprestimos, ocupacao) VALUES
 ('Ana Silva', 'ana.silva@example.com', 2, 'estudante'),
 ('Bruno Costa', 'bruno.costa@example.com', 1, 'professor'),
 ('Carla Souza', 'carla.souza@example.com', 3, 'funcionario'),
-('Diego Oliveira', 'diego.oliveira@example.com', 0, 'estudante');
+('Diego Oliveira', 'diego.oliveira@example.com', 0, 'estudante'),
+('Eduarda Lima', 'eduarda.lima@example.com', 1, 'estudante');
 
 INSERT INTO Autor (nome, nacionalidade, biografia, vivo) VALUES
 ('Machado de Assis', 'brasileira', 'Escritor brasileiro, considerado um dos maiores nomes da literatura nacional.', FALSE),
 ('Clarice Lispector', 'brasileira', 'Escritora brasileira conhecida por sua prosa introspectiva.', FALSE),
 ('Jorge Amado', 'brasileira', 'Romancista brasileiro cujas obras retratam a cultura da Bahia.', FALSE),
+('Carlos Drummond de Andrade', 'brasileira', 'Poeta e cronista brasileiro, autor de ampla obra literaria.', FALSE),
 ('Conceicao Evaristo', 'brasileira', 'Escritora brasileira reconhecida por sua contribuição a literatura contemporanea.', TRUE);
 
 INSERT INTO Livro (nome, sintese, editora, data_publicacao, id_autor) VALUES
 ('Dom Casmurro', 'Romance que narra as memorias de Bento Santiago e sua relacao com Capitu.', 'Editora Nacional', '1899-01-01', 1),
 ('A Hora da Estrela', 'Narrativa sobre Macabea, uma jovem nordestina vivendo no Rio de Janeiro.', 'Rocco', '1977-01-01', 2),
 ('Capitaes da Areia', 'Historia de um grupo de meninos que vive nas ruas de Salvador.', 'Companhia das Letras', '1937-01-01', 3),
+('Sentimento do Mundo', 'Coletanea de poemas que aborda temas sociais e existenciais.', 'Companhia das Letras', '1940-01-01', 5),
 ('Olhos d Agua', 'Coletanea de contos sobre memoria, identidade e experiencias afro-brasileiras.', 'Pallas', '2014-01-01', 4);
 
 INSERT INTO Emprestimo (data_emprestimo, id_leitor, id_livro) VALUES
 ('2026-01-10', 1, 1),
 ('2026-01-12', 2, 2),
 ('2026-01-15', 3, 3),
+('2026-01-20', 5, 5),
 ('2026-01-18', 4, 4);
 
 -- Adiciona parâmetro de telefone a tabela Leitor
 ALTER TABLE Leitor
 ADD telefone VARCHAR(20);
 
--- Altera o número de emprestimos para o leitor com ID 4 (Diego Oliveira)
+-- Altera o número de emprestimos para o leitor com ID 4
 UPDATE Leitor
 SET numero_emprestimos = 2
 WHERE id_leitor = 4;
@@ -77,6 +81,3 @@ WHERE id_leitor = 4;
 -- Remove o emprestimo de ID 4
 DELETE FROM Emprestimo
 WHERE id_emprestimo = 4;
-
--- Apaga o banco de dados
-DROP DATABASE biblioteca
